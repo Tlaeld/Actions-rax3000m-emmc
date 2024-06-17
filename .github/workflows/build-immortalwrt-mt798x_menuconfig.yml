@@ -121,12 +121,14 @@ jobs:
 
     - name: 下载文件
       run: |
+        mkdir -p openwrt/bin/targets/mediatek/mt7981  
         cd openwrt
         # chmod +x $GITHUB_WORKSPACE/$CLASH_CORE && $GITHUB_WORKSPACE/$CLASH_CORE
         make defconfig
         make download -j8 V=10
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
+        
 
     - name: Setup Debug Session
       uses: csexton/debugger-action@master
@@ -157,6 +159,7 @@ jobs:
       run: |
         cp openwrt/.config openwrt/bin/targets/*/*/
         cd openwrt/bin/targets/*/*
+        cp .config config
         rm -rf *.buildinfo 
         rm -rf *.json 
         rm -rf *.manifest 
