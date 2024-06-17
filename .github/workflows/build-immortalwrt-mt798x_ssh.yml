@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build ImmortalWrt-mt798x
+name: Build ImmortalWrt-mt798x_ssh
 
 permissions: write-all
 # 开启写权限，防止无法上传到release
@@ -128,13 +128,8 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: executing remote ssh commands to develop
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USERNAME }}
-        key: ${{ secrets.SSH_KEY }}
-        port: ${{ secrets.SSH_PORT }}
+    - name: Setup Debug Session
+      uses: csexton/debugger-action@master
 
 
     - name: 编译固件中
