@@ -130,6 +130,9 @@ jobs:
 
     - name: Setup Debug Session
       uses: csexton/debugger-action@master
+      with: 
+        run: |
+            echo "status=success" >> $GITHUB_OUTPUT
 
 
     # - name: 编译固件中
