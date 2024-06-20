@@ -6,3 +6,6 @@ sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bis
   nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pip python3-ply \
   python3-pyelftools qemu-utils re2c rsync scons squashfs-tools subversion swig \
   texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
+
+sudo apt install gcc-10 g++-10
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 60 --slave /usr/bin/g++ g++ /usr/bin/g++-10
